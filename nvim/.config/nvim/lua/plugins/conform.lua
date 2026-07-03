@@ -15,11 +15,8 @@ return {
 				-- go
 				go = { "gofmt" },
 
-				-- c
+				-- c / c++
 				c = { "clang-format" },
-
-				-- rust
-				rust = { "rustfmt" },
 
 				-- Web technologies
 				javascript = { "prettier" },
@@ -33,9 +30,6 @@ return {
 				html = { "prettier" },
 				css = { "prettier" },
 				scss = { "prettier" },
-
-				-- php
-				php = { "pint" },
 
 				-- shell
 				sh = { "shfmt" },

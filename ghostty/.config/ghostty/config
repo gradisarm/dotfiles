@@ -1,10 +1,8 @@
 # font
-font-size = 18
-# font-family = JetBrainsMonoNL Nerd Font
-font-family = CaskaydiaMono Nerd Font 
-
+font-size = 16
+font-family = JetBrainsMonoNL Nerd Font 
 #opacity
-background-opacity = 0.70
+background-opacity = 0.90
 # background-blur-radius = 40
 
 # cursor
@@ -16,13 +14,13 @@ mouse-hide-while-typing = true
 # other
 window-save-state = always
 macos-titlebar-style = hidden
-window-padding-x = 5
+window-padding-x = 10
 window-padding-y = 0
 
 # colors
-palette = 1=#d8647e
-palette = 2=#7fa563
-palette = 3=#f3be7c
-palette = 4=#9bb4bc
-palette = 6=#6e94b2
-background = #111111
+palette = 1=#cb4239
+palette = 2=#89982e
+palette = 3=#ae8b2d
+palette = 4=#4689cc
+palette = 6=#519f98
+background = #1a1a1a

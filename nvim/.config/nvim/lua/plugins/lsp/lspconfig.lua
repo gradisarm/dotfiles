@@ -110,21 +110,6 @@ return {
 		})
 		vim.lsp.enable("cssls")
 
-		-- php
-		vim.lsp.config("intelephense", {
-			settings = {
-				intelephense = {
-					telemetry = {
-						enabled = false,
-					},
-				},
-			},
-			init_options = {
-				globalStoragePath = os.getenv("HOME") .. "/.local/share/intelephense",
-			},
-		})
-		vim.lsp.enable("intelephense")
-
 		-- go
 		vim.lsp.config("gopls", {
 			settings = {
@@ -143,31 +128,34 @@ return {
 		vim.lsp.config("jdtls", {})
 		vim.lsp.enable("jdtls")
 
-		-- rust
-		vim.lsp.config("rust_analyzer", {})
-		vim.lsp.enable("rust_analyzer")
-
 		-- vue
 		vim.lsp.config("vue_ls", {})
 		vim.lsp.enable("vue_ls")
 
 		-- c#
 		vim.lsp.config("roslyn_ls", {
-			settings = {
-				["csharp|background_analysis"] = {
-					dotnet_analyzer_diagnostics_scope = "openFiles",
-					dotnet_compiler_diagnostics_scope = "openFiles",
-				},
+			handlers = {
+				-- Drop unidentifiable Roslyn diagnostics to prevent duplicates.
+				["textDocument/diagnostic"] = function(err, result, ctx)
+					if not (ctx.params and ctx.params.identifier) then
+						return
+					end
+					return vim.lsp.diagnostic.on_diagnostic(err, result, ctx)
+				end,
 			},
 		})
 		vim.lsp.enable("roslyn_ls")
 
-		-- c
+		-- c / c++
 		vim.lsp.config("clangd", {})
 		vim.lsp.enable("clangd")
 
 		-- python
 		vim.lsp.config("pyright", {})
 		vim.lsp.enable("pyright")
+
+		-- swift
+		vim.lsp.config("sourcekit", {})
+		vim.lsp.enable("sourcekit")
 	end,
 }

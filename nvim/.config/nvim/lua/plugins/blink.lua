@@ -12,8 +12,6 @@ return {
 
             luasnip.filetype_extend("javascriptreact", { "html" })
             luasnip.filetype_extend("typescriptreact", { "html" })
-            luasnip.filetype_extend("php", { "html" })
-            luasnip.filetype_extend("twig", { "html" })
 
             require("blink.cmp").setup({
                 snippets = { preset = "luasnip" },

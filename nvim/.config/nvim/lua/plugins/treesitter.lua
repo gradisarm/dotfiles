@@ -25,11 +25,11 @@ return {
 			"gowork",
 			"gosum",
 			"tsx",
-			"php",
 			"python",
 			"c_sharp",
 			"xml",
 			"http",
+			"swift",
 		}
 		for _, parser in ipairs(parsers) do
 			ts.install(parser)

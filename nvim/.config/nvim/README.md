@@ -20,7 +20,6 @@
 ## General Keybindings
 
 **Insert Mode**
-- `jj`: Exit insert mode
 - `<C-c>`: Exit insert mode
 
 **Visual Mode**
@@ -42,8 +41,6 @@
 - `<C-c>`: Clear search highlight
 - `Q`: Disable Q
 - `<leader>rw`: Replace word under cursor throughout file
-- `<leader>x`: Make current file executable
-- `<leader>m`: Split code Blocks
 ---
 
 ## Split Management and Navigation
@@ -139,6 +136,8 @@
 
 - `<leader>q`: Open diagnostic quickfix list
 - `<leader>e`: Toggle Nvim Tree file explorer
+- `<leader>x`: Expand nvin-tree 
+- `<leader>X`: Collapse nvin-tree 
 - `<leader>u`: Toggle Undotree
 - `]t`: Jump to next todo comment
 - `[t`: Jump to previous todo comment

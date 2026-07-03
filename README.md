@@ -22,7 +22,7 @@ This will create a symlink in ~/.config/nvim.
 ### Runtime (Required for Configs)
 - **Oh My Zsh**: Required for theme and plugin management.
 - **Nvim**: fzf, fd, rg, lazygit, tree-sitter-cli
-- **Zsh**: fzf, zoxide
+- **Zsh**: fzf, zoxide, bat
 - **Zsh Plugins**: zsh-autosuggestions, zsh-syntax-highlighting
 
 ### Zsh Plugins

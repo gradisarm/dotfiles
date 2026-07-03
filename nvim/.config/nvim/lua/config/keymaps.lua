@@ -1,7 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-vim.api.nvim_set_keymap("i", "jj",
-    "<Esc>", { noremap = false })                            -- Exit insert mode with jj
 vim.keymap.set("i", "<C-c>", "<Esc>")                        -- Exit insert mode with ctrl+c
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")                 -- Move lines down in visual selection
@@ -30,9 +28,6 @@ vim.keymap.set("n", "Q", "<nop>")                            -- Unmaps Q in norm
 vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { desc = "Replace the word under the cursor throughout the entire file" })
 
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>",
-    { silent = true, desc = "Make file executable" })
-
 --split management
 vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
@@ -50,3 +45,9 @@ vim.keymap.set("n", "<C-p>", "<C-^>", { desc = "Switch to alternate file" })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 -- vim.keymap.set('n', '<leader>cd', ':Ex<cr>', { desc = 'Open [E]xplorer' })
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Open Nvim Tree' })
+vim.keymap.set('n', '<leader>x', function()
+	require('nvim-tree.api').tree.expand_all()
+end, { desc = 'NvimTree expand all', silent = true })
+vim.keymap.set('n', '<leader>X', function()
+	require('nvim-tree.api').tree.collapse_all()
+end, { desc = 'NvimTree collapse all', silent = true })
