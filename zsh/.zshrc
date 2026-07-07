@@ -1,6 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="eastwood"
 plugins=(
   git
   zsh-autosuggestions
@@ -68,7 +69,6 @@ export PATH="$JAVA_HOME/bin:$PATH"
 # c#
 export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
 
-
 # obsidian
 alias vaultpush="~/.config/scripts/vault-backup.sh"
 
@@ -79,4 +79,3 @@ alias love="/Applications/love.app/Contents/MacOS/love"
 alias mp4='yt-dlp -f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b" -o "~/Documents/Videos/%(title)s.%(ext)s"'
 alias mp3='yt-dlp -f "bestaudio" --extract-audio --audio-format mp3 -o "~/Music/%(title)s.%(ext)s"'
 alias wav='yt-dlp -f "bestaudio" --extract-audio --audio-format wav -o "~/Music/%(title)s.%(ext)s"'
-

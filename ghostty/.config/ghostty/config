@@ -24,3 +24,4 @@ palette = 3=#ae8b2d
 palette = 4=#4689cc
 palette = 6=#519f98
 background = #1a1a1a
+foreground = #cdcdcd
