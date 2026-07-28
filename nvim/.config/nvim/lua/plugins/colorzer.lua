@@ -1,10 +1,11 @@
 return {
-	"norcalli/nvim-colorizer.lua",
+	"catgoose/nvim-colorizer.lua",
 	config = function()
 		require("colorizer").setup({
-			"*",
-		}, {
-			names = false,
+			filetypes = { "*" },
+			user_default_options = {
+				names = false,
+			},
 		})
 	end,
 }

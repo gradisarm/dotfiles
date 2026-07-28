@@ -7,16 +7,17 @@ return {
 				-- lua
 				lua = { "stylua" },
 
-				cs = { "csharpier" },
+				-- c
+				c = { "clang-format" },
 
-				-- java
-				java = { "google-java-format" },
+				-- cpp
+				cpp = { "clang-format" },
 
 				-- go
 				go = { "gofmt" },
 
-				-- c / c++
-				c = { "clang-format" },
+				-- c#
+				cs = { "csharpier" },
 
 				-- Web technologies
 				javascript = { "prettier" },
@@ -29,7 +30,6 @@ return {
 				markdown = { "prettier" },
 				html = { "prettier" },
 				css = { "prettier" },
-				scss = { "prettier" },
 
 				-- shell
 				sh = { "shfmt" },

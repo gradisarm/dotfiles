@@ -124,10 +124,6 @@ return {
 		})
 		vim.lsp.enable("gopls")
 
-		-- java
-		vim.lsp.config("jdtls", {})
-		vim.lsp.enable("jdtls")
-
 		-- vue
 		vim.lsp.config("vue_ls", {})
 		vim.lsp.enable("vue_ls")
@@ -147,15 +143,9 @@ return {
 		vim.lsp.enable("roslyn_ls")
 
 		-- c / c++
-		vim.lsp.config("clangd", {})
+		vim.lsp.config("clangd", {
+			filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+		})
 		vim.lsp.enable("clangd")
-
-		-- python
-		vim.lsp.config("pyright", {})
-		vim.lsp.enable("pyright")
-
-		-- swift
-		vim.lsp.config("sourcekit", {})
-		vim.lsp.enable("sourcekit")
 	end,
 }

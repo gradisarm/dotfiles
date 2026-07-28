@@ -6,7 +6,7 @@ plugins=(
   git
   zsh-autosuggestions
   zsh-syntax-highlighting
-  vi-mode
+  # vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -23,6 +23,10 @@ setopt hist_save_no_dups
 setopt hist_find_no_dups
 
 # vim stuff
+
+bindkey -v
+export KEYTIMEOUT=1
+
 function zle-keymap-select {
   if [[ $KEYMAP == vicmd ]]; then
     printf '\e[2 q'
@@ -30,15 +34,18 @@ function zle-keymap-select {
     printf '\e[1 q'
   fi
 }
+zle -N zle-keymap-select
 
-precmd() {
+function zle-line-init {
   printf '\e[1 q'
 }
-
-zle -N zle-keymap-select
+zle -N zle-line-init
 
 alias vim="nvim"
 export EDITOR=nvim
+
+# completion
+# bindkey '^Y' autosuggest-accept
 
 # /bin
 export PATH="$HOME/.local/bin:$PATH"
@@ -48,32 +55,21 @@ export GPG_TTY=$(tty)
 
 # fzf
 source <(fzf --zsh)
-# export FZF_DEFAULT_OPTS="--layout=reverse"
 
 export FZF_DEFAULT_OPTS="--height=100% --layout=reverse --border"
+export FZF_CTRL_T_OPTS="--preview-window=right:50%"
 
-export FZF_CTRL_T_OPTS="
-  --preview 'bat --theme=\"Solarized (dark)\" --style=numbers --color=always {}'
-  --preview-window=right:50%
-"
 # zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
 # fnm
 eval "$(fnm env --use-on-cd --shell zsh)"
 
-# java
-export JAVA_HOME=/opt/homebrew/opt/openjdk
-export PATH="$JAVA_HOME/bin:$PATH"
-
 # c#
 export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
 
 # obsidian
 alias vaultpush="~/.config/scripts/vault-backup.sh"
-
-# love2d
-alias love="/Applications/love.app/Contents/MacOS/love"
 
 # yt-dlp
 alias mp4='yt-dlp -f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b" -o "~/Documents/Videos/%(title)s.%(ext)s"'

@@ -43,11 +43,3 @@ vim.keymap.set("n", "<C-p>", "<C-^>", { desc = "Switch to alternate file" })
 
 -- Other stuff
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
--- vim.keymap.set('n', '<leader>cd', ':Ex<cr>', { desc = 'Open [E]xplorer' })
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = 'Open Nvim Tree' })
-vim.keymap.set('n', '<leader>x', function()
-	require('nvim-tree.api').tree.expand_all()
-end, { desc = 'NvimTree expand all', silent = true })
-vim.keymap.set('n', '<leader>X', function()
-	require('nvim-tree.api').tree.collapse_all()
-end, { desc = 'NvimTree collapse all', silent = true })

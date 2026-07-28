@@ -21,9 +21,7 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 
 -- Status line settings 
-vim.opt.showmode = false
 vim.opt.showcmd = false
--- vim.g.have_nerd_font = false
 
 -- Tabs and indentation settings
 vim.opt.tabstop = 4
@@ -85,3 +83,4 @@ vim.opt.hlsearch = true
 
 -- Enable mouse
 vim.opt.mouse = "a"
+vim.opt.smoothscroll = true

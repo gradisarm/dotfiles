@@ -1,21 +1,20 @@
 # font
-font-size = 16
-font-family = JetBrainsMonoNL Nerd Font 
+font-size = 18
+font-family = Fira Mono
+# font-family = JetBrainsMonoNL Nerd Font 
 #opacity
 background-opacity = 0.90
-# background-blur-radius = 40
 
 # cursor
 cursor-style = block
 cursor-style-blink = true
 shell-integration-features = no-cursor
 mouse-hide-while-typing = true
+cursor-click-to-move = false
 
 # other
 window-save-state = always
-macos-titlebar-style = hidden
-window-padding-x = 10
-window-padding-y = 0
+clipboard-read = allow
 
 # colors
 palette = 1=#cb4239

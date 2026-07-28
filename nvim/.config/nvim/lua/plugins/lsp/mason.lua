@@ -19,10 +19,8 @@ return {
 				-- Language servers
 				"lua-language-server",
 				"gopls",
-				"jdtls",
 				"clangd",
 				"roslyn-language-server",
-				"pyright",
 				"intelephense",
 				"typescript-language-server",
 				"css-lsp",
@@ -30,7 +28,6 @@ return {
 				"vue-language-server",
 				-- Formatters
 				"csharpier",
-				"google-java-format",
 				"clang-format",
 				"stylua",
 				"shfmt",
