@@ -14,7 +14,7 @@ return {
     },
     keys = {
         {
-            "<leader>o",
+            "<leader>e",
             function()
                 if vim.bo.filetype == "oil" then
                     require("oil").close()

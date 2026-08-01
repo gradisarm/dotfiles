@@ -1,13 +1,9 @@
--- Minimal colorscheme for reading code. Everything you named, and the
--- punctuation around it, stays plain foreground.
---
---   dim      you can skip this        comments
---   blue     what the code does       keywords, preprocessor
---   cyan     what the code is         types
---   green    this is data, not code   strings and chars
---   magenta  this is a literal value  numbers, booleans, null
---
--- red/yellow/orange are state only: diagnostics, diffs, search.
+-- slate: comments
+-- gold: keywords, preprocessor
+-- teal: types
+-- blue: strings
+-- pink: literals
+-- red/yellow/sage state: diagnostics, diffs, search
 
 vim.cmd.highlight("clear")
 if vim.fn.exists("syntax_on") == 1 then
@@ -16,261 +12,224 @@ end
 
 local nvim_set_hl = vim.api.nvim_set_hl
 
--- local bg = "#232832"      -- canvas
--- local surface = "#3b4252" -- raised: statusline, popups, cursorline
--- local dim = "#616e88"     -- skippable: comments, line numbers, chrome
--- local fg = "#d8dee9"      -- everything else
---
--- local comments = "#616e88"
---
--- local blue = "#81a1c1"
--- local cyan = "#88c0d0"
--- local green = "#a3be8c"
--- local magenta = "#b48ead"
---
--- local red = "#bf616a"
--- local yellow = "#ebcb8b"
--- local orange = "#d08770"
+local black = "#161618"
+local charcoal = "#1d1d1c"
+local gray = "#534c50"
+local light_gray = "#afb8b8"
 
--- local bg = "#102929"
--- local surface = "#273E3F"
--- local dim = "#556768"
--- local fg = "#D4E5E4"
---
--- local comments = "#ACAF9C"
---
--- local blue = "#65BFA1"
--- local cyan = "#7ebfc5"
--- local green = "#A5ADDD"
--- local magenta = "#5DACE1"
---
--- local red = "#C34143"
--- local yellow = "#FFFEDB"
--- local orange = "#C1C88D"
+local slate = "#616e88"
 
-local bg = "#161618"
-local surface = "#1d1d1c"
-local dim = "#534c50"
-local fg = "#afb8b8"
-
-local comments = "#616e88"
-
--- local blue = "#DBAD49"
-local blue = "#da9d38"
-local cyan = "#678E87"
--- local green = "#c7a2aa"
-local magenta = "#c7a2aa"
-local green = "#8ca4c8"
--- local magenta = "#8ca4c8"
+local gold = "#da9d38"
+local teal = "#678E87"
+local pink = "#c7a2aa"
+local blue = "#8ca4c8"
 
 local red = "#bf616a"
 local yellow = "#ebcb8b"
-local orange = "#d08770"
+local sage = "#ACAF9C"
 
 local highlights = {
-    -- Editor chrome
-    Normal = { fg = fg, bg = bg },
-    NormalFloat = { fg = fg, bg = surface },
-    FloatBorder = { fg = dim, bg = surface },
-    FloatTitle = { fg = fg, bg = surface, bold = true },
+    -- Chrome
+    Normal = { fg = light_gray, bg = black },
+    NormalFloat = { fg = light_gray, bg = charcoal },
+    FloatBorder = { fg = gray, bg = charcoal },
+    FloatTitle = { fg = light_gray, bg = charcoal, bold = true },
 
     Bold = { bold = true },
     Italic = { italic = true },
     Underlined = { underline = true },
     Conceal = {},
 
-    ColorColumn = { bg = surface },
-    CursorLine = { bg = surface },
-    CursorColumn = { bg = surface },
-    CursorLineNr = { fg = fg },
-    LineNr = { fg = dim },
-    SignColumn = { bg = bg },
-    FoldColumn = { fg = dim, bg = bg },
-    Folded = { fg = dim, bg = surface },
-    EndOfBuffer = { fg = bg },
-    NonText = { fg = dim },
-    SpecialKey = { fg = dim },
-    Whitespace = { fg = surface },
-    WinSeparator = { fg = surface },
-    Directory = { fg = blue },
-    Title = { fg = fg, bold = true },
-    Cursor = { fg = bg, bg = fg },
+    ColorColumn = { bg = charcoal },
+    CursorLine = { bg = charcoal },
+    CursorColumn = { bg = charcoal },
+    CursorLineNr = { fg = light_gray },
+    LineNr = { fg = gray },
+    SignColumn = { bg = black },
+    FoldColumn = { fg = gray, bg = black },
+    Folded = { fg = gray, bg = charcoal },
+    EndOfBuffer = { fg = black },
+    NonText = { fg = gray },
+    SpecialKey = { fg = gray },
+    Whitespace = { fg = charcoal },
+    WinSeparator = { fg = charcoal },
+    Directory = { fg = gold },
+    Title = { fg = light_gray, bold = true },
+    Cursor = { fg = black, bg = light_gray },
 
-    -- fg pinned: a bg-only group inherits fg from whatever else hits the cell.
-    MatchParen = { fg = fg, bg = dim },
+    MatchParen = { fg = light_gray, bg = gray },
 
-    -- Solid block, so it stays visible on top of CursorLine.
-    Visual = { fg = bg, bg = dim },
-    VisualNOS = { fg = bg, bg = dim },
+    -- Selection and search
+    Visual = { fg = black, bg = gray },
+    VisualNOS = { fg = black, bg = gray },
+    Search = { fg = black, bg = yellow },
+    IncSearch = { fg = black, bg = sage },
+    CurSearch = { fg = black, bg = sage },
+    Substitute = { fg = black, bg = sage },
 
-    Search = { fg = bg, bg = yellow },
-    IncSearch = { fg = bg, bg = orange },
-    CurSearch = { fg = bg, bg = orange },
-    Substitute = { fg = bg, bg = orange },
+    Pmenu = { fg = light_gray, bg = charcoal },
+    PmenuSel = { fg = light_gray, bg = gray },
+    PmenuSbar = { bg = charcoal },
+    PmenuThumb = { bg = gray },
+    WildMenu = { fg = light_gray, bg = gray },
 
-    Pmenu = { fg = fg, bg = surface },
-    PmenuSel = { fg = fg, bg = dim },
-    PmenuSbar = { bg = surface },
-    PmenuThumb = { bg = dim },
-    WildMenu = { fg = fg, bg = dim },
+    StatusLine = { fg = light_gray, bg = charcoal },
+    StatusLineNC = { fg = gray, bg = black },
+    WinBar = { fg = gray, bg = black },
+    WinBarNC = { fg = gray, bg = black },
+    TabLine = { fg = gray, bg = black },
+    TabLineFill = { bg = black },
+    TabLineSel = { fg = light_gray, bg = charcoal, bold = true },
 
-    StatusLine = { fg = fg, bg = surface },
-    StatusLineNC = { fg = dim, bg = bg },
-    WinBar = { fg = dim, bg = bg },
-    WinBarNC = { fg = dim, bg = bg },
-    TabLine = { fg = dim, bg = bg },
-    TabLineFill = { bg = bg },
-    TabLineSel = { fg = fg, bg = surface, bold = true },
-
-    ModeMsg = { fg = fg },
-    MoreMsg = { fg = fg },
-    Question = { fg = fg },
+    ModeMsg = { fg = light_gray },
+    MoreMsg = { fg = light_gray },
+    Question = { fg = light_gray },
     ErrorMsg = { fg = red },
     WarningMsg = { fg = yellow },
-    QuickFixLine = { bg = surface },
+    QuickFixLine = { bg = charcoal },
 
     -- Syntax
-    Comment = { fg = comments },
+    Comment = { fg = slate },
 
-    Identifier = { fg = fg },
-    Function = { fg = fg },
-    Constant = { fg = fg },
-    Operator = { fg = blue },
-    Delimiter = { fg = fg },
-    Special = { fg = fg },
-    SpecialChar = { fg = fg },
-    Tag = { fg = fg },
-    Debug = { fg = fg },
-    Ignore = { fg = dim },
+    Identifier = { fg = light_gray },
+    Function = { fg = light_gray },
+    Constant = { fg = light_gray },
+    Operator = { fg = gold },
+    Delimiter = { fg = light_gray },
+    Special = { fg = light_gray },
+    SpecialChar = { fg = light_gray },
+    Tag = { fg = light_gray },
+    Debug = { fg = light_gray },
+    Ignore = { fg = gray },
 
-    Statement = { fg = blue },
-    Keyword = { fg = blue },
-    Conditional = { fg = blue },
-    Repeat = { fg = blue },
-    Label = { fg = blue },
-    Exception = { fg = blue },
-    StorageClass = { fg = blue },
+    Statement = { fg = gold },
+    Keyword = { fg = gold },
+    Conditional = { fg = gold },
+    Repeat = { fg = gold },
+    Label = { fg = gold },
+    Exception = { fg = gold },
+    StorageClass = { fg = gold },
 
-    Type = { fg = cyan },
-    Structure = { fg = cyan },
-    Typedef = { fg = cyan },
+    Type = { fg = teal },
+    Structure = { fg = teal },
+    Typedef = { fg = teal },
 
-    PreProc = { fg = blue },
-    Include = { fg = blue },
-    Define = { fg = blue },
-    Macro = { fg = blue },
-    PreCondit = { fg = blue },
+    PreProc = { fg = gold },
+    Include = { fg = gold },
+    Define = { fg = gold },
+    Macro = { fg = gold },
+    PreCondit = { fg = gold },
 
-    String = { fg = green },
-    Character = { fg = green },
-    Number = { fg = magenta },
-    Float = { fg = magenta },
-    Boolean = { fg = magenta },
+    String = { fg = blue },
+    Character = { fg = blue },
+    Number = { fg = pink },
+    Float = { fg = pink },
+    Boolean = { fg = pink },
 
     Todo = { fg = yellow, bold = true },
     Error = { fg = red },
-    SpecialComment = { fg = comments, bold = true },
+    SpecialComment = { fg = slate, bold = true },
 
-    -- Tree-sitter. Fallback walks the dot-prefix (@tag.delimiter -> @tag), and
-    -- nvim's defaults often point elsewhere. Omitted captures land on fg.
-    ["@variable"] = { fg = fg },                 -- default is a literal color
-    ["@variable.builtin"] = { fg = blue },
-    ["@constant.builtin"] = { fg = magenta },
-    ["@constant.macro"] = { fg = blue },
-    ["@type.builtin"] = { fg = cyan },
-    ["@module"] = { fg = fg },
-    ["@attribute"] = { fg = fg },
+    -- Tree-sitter
+    ["@variable"] = { fg = light_gray },
+    ["@variable.builtin"] = { fg = gold },
+    ["@constant.builtin"] = { fg = pink },
+    ["@constant.macro"] = { fg = gold },
+    ["@type.builtin"] = { fg = teal },
+    ["@module"] = { fg = light_gray },
+    ["@attribute"] = { fg = light_gray },
 
-    -- Part of the language, not imported. Empty in C++, where these are keywords.
-    ["@function.builtin"] = { fg = blue },
+    ["@function.builtin"] = { fg = gold },
 
-    ["@string.escape"] = { fg = magenta },       -- the \n inside a string
-    ["@string.regexp"] = { fg = green },
-    ["@character.special"] = { fg = magenta },
+    ["@string.escape"] = { fg = pink },
+    ["@string.regexp"] = { fg = blue },
+    ["@character.special"] = { fg = pink },
 
     ["@comment.error"] = { fg = red, bold = true },
     ["@comment.warning"] = { fg = yellow, bold = true },
     ["@comment.todo"] = { fg = yellow, bold = true },
-    ["@comment.note"] = { fg = blue, bold = true },
+    ["@comment.note"] = { fg = gold, bold = true },
 
-    ["@tag"] = { fg = blue },
-    ["@tag.builtin"] = { fg = blue },
-    ["@tag.attribute"] = { fg = fg },
-    ["@tag.delimiter"] = { fg = fg },            -- else inherits @tag above
+    ["@tag"] = { fg = gold },
+    ["@tag.builtin"] = { fg = gold },
+    ["@tag.attribute"] = { fg = light_gray },
+    ["@tag.delimiter"] = { fg = light_gray }, -- else inherits @tag
 
-    ["@markup.heading"] = { fg = blue, bold = true },
+    ["@markup.heading"] = { fg = gold, bold = true },
     ["@markup.strong"] = { bold = true },
     ["@markup.italic"] = { italic = true },
     ["@markup.strikethrough"] = { strikethrough = true },
-    ["@markup.link"] = { fg = blue, underline = true },
-    ["@markup.link.url"] = { fg = dim, underline = true },
-    ["@markup.raw"] = { fg = green },
-    ["@markup.quote"] = { fg = dim, italic = true },
+    ["@markup.link"] = { fg = gold, underline = true },
+    ["@markup.link.url"] = { fg = gray, underline = true },
+    ["@markup.raw"] = { fg = blue },
+    ["@markup.quote"] = { fg = gray, italic = true },
 
     -- Diagnostics
-    DiagnosticOk = { fg = green },
+    DiagnosticOk = { fg = blue },
     DiagnosticError = { fg = red },
     DiagnosticWarn = { fg = yellow },
-    DiagnosticInfo = { fg = blue },
-    DiagnosticHint = { fg = dim },
-    DiagnosticUnderlineOk = { sp = green, undercurl = true },
+    DiagnosticInfo = { fg = gold },
+    DiagnosticHint = { fg = gray },
+    DiagnosticUnderlineOk = { sp = blue, undercurl = true },
     DiagnosticUnderlineError = { sp = red, undercurl = true },
     DiagnosticUnderlineWarn = { sp = yellow, undercurl = true },
-    DiagnosticUnderlineInfo = { sp = blue, undercurl = true },
-    DiagnosticUnderlineHint = { sp = dim, undercurl = true },
-    DiagnosticDeprecated = { sp = dim, strikethrough = true },
-    DiagnosticUnnecessary = { fg = dim },
+    DiagnosticUnderlineInfo = { sp = gold, undercurl = true },
+    DiagnosticUnderlineHint = { sp = gray, undercurl = true },
+    DiagnosticDeprecated = { sp = gray, strikethrough = true },
+    DiagnosticUnnecessary = { fg = gray },
 
     SpellBad = { sp = red, undercurl = true },
     SpellCap = { sp = yellow, undercurl = true },
     SpellLocal = { sp = yellow, undercurl = true },
     SpellRare = { sp = yellow, undercurl = true },
 
-    -- LSP. `dim` not `surface`: these land on the cursorline, which is surface.
-    LspReferenceText = { bg = dim },
-    LspReferenceRead = { bg = dim },
-    LspReferenceWrite = { bg = dim },
-    LspSignatureActiveParameter = { fg = fg, bg = dim },
-    LspCodeLens = { fg = dim },
-    LspCodeLensSeparator = { fg = dim },
-    LspInlayHint = { fg = dim },
+    -- LSP. gray not charcoal: these land on the cursorline.
+    LspReferenceText = { bg = gray },
+    LspReferenceRead = { bg = gray },
+    LspReferenceWrite = { bg = gray },
+    LspSignatureActiveParameter = { fg = light_gray, bg = gray },
+    LspCodeLens = { fg = gray },
+    LspCodeLensSeparator = { fg = gray },
+    LspInlayHint = { fg = gray },
 
-    -- Default-links to Visual, i.e. a solid block per placeholder.
-    SnippetTabstop = { bg = surface },
-    SnippetTabstopActive = { bg = dim },
+    SnippetTabstop = { bg = charcoal },
+    SnippetTabstopActive = { bg = gray },
 
     -- Diffs
-    DiffAdd = { fg = green },
+    DiffAdd = { fg = blue },
     DiffChange = { fg = yellow },
     DiffDelete = { fg = red },
     DiffText = { fg = yellow, bold = true },
-    Added = { fg = green },
+    Added = { fg = blue },
     Changed = { fg = yellow },
     Removed = { fg = red },
 
     gitcommitDiscardedFile = { fg = red },
     gitcommitUntrackedFile = { fg = red },
-    gitcommitSelectedFile = { fg = green },
+    gitcommitSelectedFile = { fg = blue },
 
     -- Plugins
-    MiniIndentscopeSymbol = { fg = surface },
-    TreesitterContext = { bg = surface },
-
-    -- Only takes effect if your dap config sign_defines with these names.
-    DapStoppedLine = { underline = true, sp = yellow },
-    debugPC = { underline = true, sp = yellow },
-    DapStopped = { fg = bg, bg = yellow },
-    DapBreakpoint = { fg = red },
+    TreesitterContext = { bg = charcoal },
+    GitSignsAdd = { fg = teal },
+    GitSignsChange = { fg = yellow },
+    GitSignsDelete = { fg = red },
+    GitSignsTopdelete = { fg = red },
+    GitSignsChangedelete = { fg = yellow },
+    GitSignsUntracked = { fg = gray },
+    GitSignsAddPreview = { fg = teal },
+    GitSignsDeletePreview = { fg = red },
+    GitSignsAddInline = { fg = black, bg = blue },
+    GitSignsDeleteInline = { fg = black, bg = red },
+    GitSignsChangeInline = { fg = black, bg = yellow },
 }
 
 for group, opts in pairs(highlights) do
     nvim_set_hl(0, group, opts)
 end
 
--- Semantic tokens outrank tree-sitter (125 vs 100); clearing them makes
--- clangd fall through instead of repainting everything above.
+-- Clear LSP semantic tokens so tree-sitter wins.
 for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
     nvim_set_hl(0, group, {})
 end
 
-vim.g.colors_name = "nord"
+vim.g.colors_name = "custom"
