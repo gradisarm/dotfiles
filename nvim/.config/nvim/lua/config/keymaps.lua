@@ -1,6 +1,6 @@
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("i", "<C-c>", "<Esc>")                        -- Exit insert mode with ctrl+c
+vim.keymap.set("i", "<C-n>", "<Esc>")                        -- Exit insert mode with ctrl+c
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")                 -- Move lines down in visual selection
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")                 -- Move lines up in visual selection
@@ -26,7 +26,7 @@ vim.keymap.set("n", "<C-c>", ":nohl<CR>", { silent = true }) -- Clear search hig
 vim.keymap.set("n", "Q", "<nop>")                            -- Unmaps Q in normal mode
 
 vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    { desc = "Replace the word under the cursor throughout the entire file" })
+	{ desc = "Replace the word under the cursor throughout the entire file" })
 
 --split management
 vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
@@ -40,6 +40,13 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 vim.keymap.set("n", "<C-p>", "<C-^>", { desc = "Switch to alternate file" })
+
+-- Terminal
+vim.keymap.set("t", "<C-n>", "<C-\\><C-n>", { desc = "Terminal: to normal mode" })
+vim.keymap.set("n", "<leader>t", function()
+	vim.cmd("terminal")
+	vim.cmd("startinsert")
+end, { desc = "Open terminal" })
 
 -- Other stuff
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })

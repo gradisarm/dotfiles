@@ -16,36 +16,56 @@ end
 
 local nvim_set_hl = vim.api.nvim_set_hl
 
-local bg = "#2e3440"      -- canvas
-local surface = "#3b4252" -- raised: statusline, popups, cursorline
-local dim = "#616e88"     -- skippable: comments, line numbers, chrome
-local fg = "#d8dee9"      -- everything else
+-- local bg = "#232832"      -- canvas
+-- local surface = "#3b4252" -- raised: statusline, popups, cursorline
+-- local dim = "#616e88"     -- skippable: comments, line numbers, chrome
+-- local fg = "#d8dee9"      -- everything else
+--
+-- local comments = "#616e88"
+--
+-- local blue = "#81a1c1"
+-- local cyan = "#88c0d0"
+-- local green = "#a3be8c"
+-- local magenta = "#b48ead"
+--
+-- local red = "#bf616a"
+-- local yellow = "#ebcb8b"
+-- local orange = "#d08770"
 
-local blue = "#81a1c1"
-local cyan = "#88c0d0"
-local green = "#a3be8c"
-local magenta = "#b48ead"
+-- local bg = "#102929"
+-- local surface = "#273E3F"
+-- local dim = "#556768"
+-- local fg = "#D4E5E4"
+--
+-- local comments = "#ACAF9C"
+--
+-- local blue = "#65BFA1"
+-- local cyan = "#7ebfc5"
+-- local green = "#A5ADDD"
+-- local magenta = "#5DACE1"
+--
+-- local red = "#C34143"
+-- local yellow = "#FFFEDB"
+-- local orange = "#C1C88D"
+
+local bg = "#161618"
+local surface = "#1d1d1c"
+local dim = "#534c50"
+local fg = "#afb8b8"
+
+local comments = "#616e88"
+
+-- local blue = "#DBAD49"
+local blue = "#da9d38"
+local cyan = "#678E87"
+-- local green = "#c7a2aa"
+local magenta = "#c7a2aa"
+local green = "#8ca4c8"
+-- local magenta = "#8ca4c8"
 
 local red = "#bf616a"
 local yellow = "#ebcb8b"
 local orange = "#d08770"
-
-vim.g.terminal_color_0 = surface
-vim.g.terminal_color_1 = red
-vim.g.terminal_color_2 = green
-vim.g.terminal_color_3 = yellow
-vim.g.terminal_color_4 = blue
-vim.g.terminal_color_5 = magenta
-vim.g.terminal_color_6 = cyan
-vim.g.terminal_color_7 = fg
-vim.g.terminal_color_8 = dim
-vim.g.terminal_color_9 = red
-vim.g.terminal_color_10 = green
-vim.g.terminal_color_11 = yellow
-vim.g.terminal_color_12 = blue
-vim.g.terminal_color_13 = magenta
-vim.g.terminal_color_14 = cyan
-vim.g.terminal_color_15 = fg
 
 local highlights = {
     -- Editor chrome
@@ -110,12 +130,12 @@ local highlights = {
     QuickFixLine = { bg = surface },
 
     -- Syntax
-    Comment = { fg = dim },
+    Comment = { fg = comments },
 
     Identifier = { fg = fg },
     Function = { fg = fg },
     Constant = { fg = fg },
-    Operator = { fg = fg },
+    Operator = { fg = blue },
     Delimiter = { fg = fg },
     Special = { fg = fg },
     SpecialChar = { fg = fg },
@@ -149,7 +169,7 @@ local highlights = {
 
     Todo = { fg = yellow, bold = true },
     Error = { fg = red },
-    SpecialComment = { fg = dim, bold = true },
+    SpecialComment = { fg = comments, bold = true },
 
     -- Tree-sitter. Fallback walks the dot-prefix (@tag.delimiter -> @tag), and
     -- nvim's defaults often point elsewhere. Omitted captures land on fg.

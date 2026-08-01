@@ -1,7 +1,9 @@
 # My dotfiles
 
-## Instalation
+## Installation
+
 Clone the repo and move into the root directory.
+
 Use stow on specific directories to place the config files in the correct locations on your machine.
 
 Example:
@@ -10,31 +12,49 @@ Example:
 stow nvim
 ```
 
-This will create a symlink in ~/.config/nvim.
+This will create a symlink in `~/.config/nvim`.
 
 ## Dependencies
 
 ### Core (Required for Installation)
-- **Git**: Duh obviously! 
+
+- **Git**: Duh obviously!
 - **GNU Stow**: Manages symlinks.
-- **CaskaydiaMono Nerd Font**: Required for Ghostty/Alacritty and Neovim icon support.
+- **Hack Nerd Font Mono**: Required for Kitty/Ghostty/Alacritty.
 
 ### Runtime (Required for Configs)
-- **Oh My Zsh**: Required for theme and plugin management.
-- **Nvim**: fzf, fd, rg, lazygit, tree-sitter-cli
-- **Zsh**: fzf, zoxide, bat
-- **Zsh Plugins**: zsh-autosuggestions, zsh-syntax-highlighting
 
-### Zsh Plugins
+- **Nvim**: fzf, fd, rg, lazygit, tree-sitter-cli
+- **Zsh**: fzf, zoxide, fnm zsh-autosuggestions, zsh-syntax-highlighting
+
+## Zsh Plugins
+
+### macOS
+
+```sh
+brew install zsh-autosuggestions zsh-syntax-highlighting
+```
+
+### Linux
 
 Install zsh-autosuggestions:
+
 ```sh
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions \
+  "${XDG_DATA_HOME:-$HOME/.local/share}/zsh/plugins/zsh-autosuggestions"
 ```
 
 Install zsh-syntax-highlighting:
+
 ```sh
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting \
+  "${XDG_DATA_HOME:-$HOME/.local/share}/zsh/plugins/zsh-syntax-highlighting"
 ```
+
+Or just use distros package manager.
+
+### Windows
+
+Why do you hate yourself?
 
 Install script will be added when I have time.

@@ -1,15 +1,5 @@
-export ZSH="$HOME/.oh-my-zsh"
-
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="eastwood"
-plugins=(
-  git
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  # vi-mode
-)
-
-source $ZSH/oh-my-zsh.sh
+# starship
+eval "$(starship init zsh)"
 
 # history
 HISTSIZE=5000
@@ -23,7 +13,6 @@ setopt hist_save_no_dups
 setopt hist_find_no_dups
 
 # vim stuff
-
 bindkey -v
 export KEYTIMEOUT=1
 
@@ -44,8 +33,11 @@ zle -N zle-line-init
 alias vim="nvim"
 export EDITOR=nvim
 
-# completion
-# bindkey '^Y' autosuggest-accept
+# colors
+export CLICOLOR=1
+
+# ghost text completion
+bindkey '^Y' autosuggest-accept
 
 # /bin
 export PATH="$HOME/.local/bin:$PATH"
@@ -75,3 +67,13 @@ alias vaultpush="~/.config/scripts/vault-backup.sh"
 alias mp4='yt-dlp -f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b" -o "~/Documents/Videos/%(title)s.%(ext)s"'
 alias mp3='yt-dlp -f "bestaudio" --extract-audio --audio-format mp3 -o "~/Music/%(title)s.%(ext)s"'
 alias wav='yt-dlp -f "bestaudio" --extract-audio --audio-format wav -o "~/Music/%(title)s.%(ext)s"'
+
+#plugins
+
+# for mac
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# plugins="$HOME/.local/share/zsh/plugins"
+# source "$plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# source "$plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

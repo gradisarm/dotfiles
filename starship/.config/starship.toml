@@ -1,0 +1,29 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$directory$git_status${custom.git_dirty}$git_branch$character
+"""
+
+add_newline = false
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+
+[git_status]
+format = "on "
+
+[custom.git_dirty]
+require_repo = true
+when = 'test -n "$(git status --porcelain)"'
+command = "echo '*'"
+format = "[$output](bold red)"
+
+[git_branch]
+symbol = ""
+style = "bold"
+format = "[$symbol$branch]($style) "
+
+[character]
+success_symbol = "[>](bold)"
+error_symbol = "[>](bold)"
