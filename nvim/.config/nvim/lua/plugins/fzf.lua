@@ -4,13 +4,10 @@ return {
 		local fzf = require("fzf-lua")
 
 		fzf.setup({
-			-- ctrl-j/k/c are fzf's own native binds; nothing to declare.
-			-- If you do add binds, keep `true` or you drop every default.
 			keymap = {
 				fzf = { true },
 				builtin = { true },
 			},
-			-- files.hidden already defaults to true; .gitignore still respected
 		})
 
 		vim.keymap.set("n", "<C-f>", fzf.git_files, {})

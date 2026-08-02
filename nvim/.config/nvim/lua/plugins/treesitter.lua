@@ -1,51 +1,49 @@
 return {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "main",
-    build = ":TSUpdate",
-    lazy = false,
-    config = function()
-        local ts = require("nvim-treesitter")
-        local parsers = {
-            "xml",
-            "http",
-            "bash",
-            "html",
-            "css",
-            "javascript",
-            "typescript",
-            "json",
-            "yaml",
-            "toml",
-            "lua",
-            "luadoc",
-            "luap",
-            "query",
-            "regex",
-            "vim",
-            "vimdoc",
-            "go",
-            "gomod",
-            "gowork",
-            "gosum",
-            "c_sharp",
-            "tsx",
-            "jsx",
-            "vue",
-            "c",
-            "cpp",
-            "cmake",
-            "make",
-            "glsl",
-            "diff",
-        }
-        for _, parser in ipairs(parsers) do
-            ts.install(parser)
-        end
+	"nvim-treesitter/nvim-treesitter",
+	branch = "main",
+	build = ":TSUpdate",
+	lazy = false,
+	config = function()
+		local parsers = {
+			"xml",
+			"http",
+			"bash",
+			"html",
+			"css",
+			"javascript",
+			"typescript",
+			"json",
+			"yaml",
+			"toml",
+			"lua",
+			"luadoc",
+			"luap",
+			"query",
+			"regex",
+			"vim",
+			"vimdoc",
+			"go",
+			"gomod",
+			"gowork",
+			"gosum",
+			"c_sharp",
+			"tsx",
+			"vue",
+			"c",
+			"cpp",
+			"cmake",
+			"make",
+			"glsl",
+			"diff",
+		}
 
-        vim.api.nvim_create_autocmd("FileType", {
-            callback = function(ev)
-                pcall(vim.treesitter.start, ev.buf)
-            end,
-        })
-    end,
+		require("nvim-treesitter").install(parsers)
+
+		vim.api.nvim_create_autocmd("FileType", {
+			group = vim.api.nvim_create_augroup("ts_start", { clear = true }),
+			callback = function(ev)
+				pcall(vim.treesitter.start, ev.buf)
+			end,
+		})
+	end,
 }

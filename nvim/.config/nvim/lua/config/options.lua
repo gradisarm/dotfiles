@@ -84,3 +84,6 @@ vim.opt.hlsearch = true
 -- Enable mouse
 vim.opt.mouse = "a"
 vim.opt.smoothscroll = true
+
+-- Spell
+vim.opt.spelllang = "en_us"
