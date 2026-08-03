@@ -3,7 +3,7 @@
 -- teal: types
 -- blue: strings
 -- pink: literals
--- red/yellow/sage state: diagnostics, diffs, search
+-- red/yellow/pebble state: diagnostics, diffs, search
 
 vim.cmd.highlight("clear")
 if vim.fn.exists("syntax_on") == 1 then
@@ -26,7 +26,8 @@ local blue = "#8ca4c8"
 
 local red = "#bf616a"
 local yellow = "#ebcb8b"
-local sage = "#ACAF9C"
+local pebble = "#8a817c"
+
 
 local highlights = {
     -- Chrome
@@ -37,7 +38,6 @@ local highlights = {
 
     Bold = { bold = true },
     Italic = { italic = true },
-    Underlined = { underline = true },
     Conceal = {},
 
     ColorColumn = { bg = charcoal },
@@ -61,23 +61,19 @@ local highlights = {
 
     -- Selection and search
     Visual = { fg = black, bg = gray },
-    VisualNOS = { fg = black, bg = gray },
     Search = { fg = black, bg = yellow },
-    IncSearch = { fg = black, bg = sage },
-    CurSearch = { fg = black, bg = sage },
-    Substitute = { fg = black, bg = sage },
+    CurSearch = { fg = black, bg = pebble },
+    Substitute = { fg = black, bg = pebble },
 
     Pmenu = { fg = light_gray, bg = charcoal },
     PmenuSel = { fg = light_gray, bg = gray },
     PmenuSbar = { bg = charcoal },
     PmenuThumb = { bg = gray },
-    WildMenu = { fg = light_gray, bg = gray },
 
     StatusLine = { fg = light_gray, bg = charcoal },
     StatusLineNC = { fg = gray, bg = black },
     WinBar = { fg = gray, bg = black },
     WinBarNC = { fg = gray, bg = black },
-    TabLine = { fg = gray, bg = black },
     TabLineFill = { bg = black },
     TabLineSel = { fg = light_gray, bg = charcoal, bold = true },
 
@@ -97,33 +93,18 @@ local highlights = {
     Operator = { fg = gold },
     Delimiter = { fg = light_gray },
     Special = { fg = light_gray },
-    SpecialChar = { fg = light_gray },
-    Tag = { fg = light_gray },
-    Debug = { fg = light_gray },
     Ignore = { fg = gray },
 
     Statement = { fg = gold },
-    Keyword = { fg = gold },
-    Conditional = { fg = gold },
-    Repeat = { fg = gold },
-    Label = { fg = gold },
-    Exception = { fg = gold },
-    StorageClass = { fg = gold },
+    StorageClass = { fg = gold }, -- default-links to Type; gold is intentional
 
     Type = { fg = teal },
-    Structure = { fg = teal },
-    Typedef = { fg = teal },
 
     PreProc = { fg = gold },
-    Include = { fg = gold },
-    Define = { fg = gold },
-    Macro = { fg = gold },
-    PreCondit = { fg = gold },
 
     String = { fg = blue },
     Character = { fg = blue },
     Number = { fg = pink },
-    Float = { fg = pink },
     Boolean = { fg = pink },
 
     Todo = { fg = yellow, bold = true },
@@ -147,7 +128,6 @@ local highlights = {
 
     ["@comment.error"] = { fg = red, bold = true },
     ["@comment.warning"] = { fg = yellow, bold = true },
-    ["@comment.todo"] = { fg = yellow, bold = true },
     ["@comment.note"] = { fg = gold, bold = true },
 
     ["@tag"] = { fg = gold },
@@ -156,9 +136,6 @@ local highlights = {
     ["@tag.delimiter"] = { fg = light_gray }, -- else inherits @tag
 
     ["@markup.heading"] = { fg = gold, bold = true },
-    ["@markup.strong"] = { bold = true },
-    ["@markup.italic"] = { italic = true },
-    ["@markup.strikethrough"] = { strikethrough = true },
     ["@markup.link"] = { fg = gold, underline = true },
     ["@markup.link.url"] = { fg = gray, underline = true },
     ["@markup.raw"] = { fg = blue },
@@ -185,42 +162,27 @@ local highlights = {
 
     -- LSP. gray not charcoal: these land on the cursorline.
     LspReferenceText = { bg = gray },
-    LspReferenceRead = { bg = gray },
-    LspReferenceWrite = { bg = gray },
     LspSignatureActiveParameter = { fg = light_gray, bg = gray },
-    LspCodeLens = { fg = gray },
-    LspCodeLensSeparator = { fg = gray },
-    LspInlayHint = { fg = gray },
 
     SnippetTabstop = { bg = charcoal },
     SnippetTabstopActive = { bg = gray },
 
     -- Diffs
-    DiffAdd = { fg = blue },
-    DiffChange = { fg = yellow },
-    DiffDelete = { fg = red },
-    DiffText = { fg = yellow, bold = true },
-    Added = { fg = blue },
+    Added = { fg = teal },
     Changed = { fg = yellow },
     Removed = { fg = red },
 
-    gitcommitDiscardedFile = { fg = red },
-    gitcommitUntrackedFile = { fg = red },
-    gitcommitSelectedFile = { fg = blue },
+    DiffAdd = { link = "Added" },
+    DiffChange = { link = "Changed" },
+    DiffDelete = { link = "Removed" },
+    DiffText = { fg = yellow, bold = true },
+
+    gitcommitDiscardedFile = { link = "Removed" },
+    gitcommitUntrackedFile = { link = "Removed" },
+    gitcommitSelectedFile = { link = "Added" },
 
     -- Plugins
     TreesitterContext = { bg = charcoal },
-    GitSignsAdd = { fg = teal },
-    GitSignsChange = { fg = yellow },
-    GitSignsDelete = { fg = red },
-    GitSignsTopdelete = { fg = red },
-    GitSignsChangedelete = { fg = yellow },
-    GitSignsUntracked = { fg = gray },
-    GitSignsAddPreview = { fg = teal },
-    GitSignsDeletePreview = { fg = red },
-    GitSignsAddInline = { fg = black, bg = blue },
-    GitSignsDeleteInline = { fg = black, bg = red },
-    GitSignsChangeInline = { fg = black, bg = yellow },
 }
 
 for group, opts in pairs(highlights) do

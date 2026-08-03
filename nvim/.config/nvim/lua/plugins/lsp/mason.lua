@@ -21,7 +21,6 @@ return {
 				"gopls",
 				"clangd",
 				"roslyn-language-server",
-				"intelephense",
 				"typescript-language-server",
 				"css-lsp",
 				"tailwindcss-language-server",

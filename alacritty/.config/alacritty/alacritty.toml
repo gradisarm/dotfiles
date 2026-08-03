@@ -1,13 +1,11 @@
 [window]
-padding = { x = 10, y = 1 }
-decorations = "buttonless"
-opacity = 0.9
+padding = { x = 10, y = 0 }
 
 [font]
 size = 16
 
 [font.normal]
-family = "JetBrainsMonoNL Nerd Font"
+family = "Hack Nerd Font"
 
 [mouse]
 hide_when_typing = true
@@ -16,31 +14,26 @@ hide_when_typing = true
 blink_timeout = 0
 
 [colors.primary]
-background = '#111111'
-foreground = '#fefefe'
+background = '#161618'
+foreground = '#afb8b8'
 
 [colors.cursor]
-text = '#1a1a1a' 
-cursor = '#fefefe'
+text   = '#161618'
+cursor = '#afb8b8'
+
+[colors.selection]
+text       = '#161618'
+background = '#616e88'
 
 [colors.normal]
-# black   = '#1a1a1a'
-# red     = '#f44747'
-# green   = '#6a9955'
-# yellow  = '#dcdcaa'
-# blue    = '#007acc'
-# magenta = '#c586c0'
-# cyan    = '#569cd6'
-# white   = '#fefefe'
-
-black   = '#1a1a1a'
-red     = '#cb4239'
-green   = '#89982e'
-yellow  = '#ae8b2d'
-blue    = '#4689cc'
-magenta = '#c34480'
-cyan    = '#519f98'
-white   = '#fefefe'
+black   = '#534c50'
+red     = '#bf616a'
+green   = '#678e87'
+yellow  = '#ebcb8b'
+blue    = '#da9d38'
+magenta = '#c7a2aa'
+cyan    = '#8ca4c8'
+white   = '#afb8b8'
 
 [[keyboard.bindings]]
 key = "Space"

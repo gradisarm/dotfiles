@@ -8,6 +8,7 @@ return {
 			"xml",
 			"http",
 			"bash",
+			"zsh",
 			"html",
 			"css",
 			"javascript",

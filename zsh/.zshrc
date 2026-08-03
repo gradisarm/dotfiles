@@ -13,25 +13,12 @@ setopt hist_save_no_dups
 setopt hist_find_no_dups
 
 # vim stuff
-bindkey -v
-export KEYTIMEOUT=1
-
-function zle-keymap-select {
-  if [[ $KEYMAP == vicmd ]]; then
-    printf '\e[2 q'
-  else
-    printf '\e[1 q'
-  fi
-}
-zle -N zle-keymap-select
-
-function zle-line-init {
-  printf '\e[1 q'
-}
-zle -N zle-line-init
-
 alias vim="nvim"
 export EDITOR=nvim
+
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
 
 # colors
 export CLICOLOR=1

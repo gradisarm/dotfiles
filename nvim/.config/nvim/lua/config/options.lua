@@ -9,11 +9,7 @@ vim.opt.timeoutlen = 300
 vim.cmd("let g:netrw_banner = 0 ")
 
 -- Cursor settings
-vim.opt.guicursor = {
-    "n-v-c:block",
-    "i-ci:block-blinkwait1000-blinkon100-blinkoff100",
-    "r:hor50-blinkwait100-blinkon100-blinkoff100",
-}
+vim.opt.guicursor = "a:block"
 vim.opt.cursorline = true
 
 -- Line settings

@@ -1,10 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
-	dependencies = {
-		"saghen/blink.cmp",
-		{ "antosha417/nvim-lsp-file-operations", config = true },
-	},
+	dependencies = { "saghen/blink.cmp" },
 	config = function()
 		-- Define sign icons for each severity
 		local signs = {
@@ -13,7 +10,6 @@ return {
 			[vim.diagnostic.severity.HINT] = "H",
 			[vim.diagnostic.severity.INFO] = "I",
 		}
-
 		-- Set diagnostic config
 		vim.diagnostic.config({
 			signs = {
@@ -25,7 +21,6 @@ return {
 		})
 
 		-- Setup capabilities
-		-- requires saghen/blink.cmp
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		vim.lsp.config("*", { capabilities = capabilities })
 
@@ -44,14 +39,11 @@ return {
 						library = {
 							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 							[vim.fn.stdpath("config") .. "/lua"] = true,
-							-- ["${3rd}/love2d/library"] = true,
 						},
 					},
 				},
 			},
 		})
-		vim.lsp.enable("lua_ls")
-
 		-- ts
 		vim.lsp.config("ts_ls", {
 			filetypes = {
@@ -61,12 +53,7 @@ return {
 				"typescriptreact",
 				"vue",
 			},
-			single_file_support = true,
 			init_options = {
-				preferences = {
-					includeCompletionsForModuleExports = true,
-					includeCompletionsForImportStatements = true,
-				},
 				plugins = {
 					{
 						name = "@vue/typescript-plugin",
@@ -77,14 +64,6 @@ return {
 				},
 			},
 		})
-		vim.lsp.enable("ts_ls")
-
-		-- tailwindcss
-		vim.lsp.config("tailwindcss", {
-			settings = {},
-		})
-		vim.lsp.enable("tailwindcss")
-
 		-- css
 		vim.lsp.config("cssls", {
 			settings = {
@@ -108,8 +87,6 @@ return {
 				},
 			},
 		})
-		vim.lsp.enable("cssls")
-
 		-- go
 		vim.lsp.config("gopls", {
 			settings = {
@@ -122,11 +99,6 @@ return {
 				},
 			},
 		})
-		vim.lsp.enable("gopls")
-
-		-- vue
-		vim.lsp.config("vue_ls", {})
-		vim.lsp.enable("vue_ls")
 
 		-- c#
 		vim.lsp.config("roslyn_ls", {
@@ -140,12 +112,16 @@ return {
 				end,
 			},
 		})
-		vim.lsp.enable("roslyn_ls")
 
-		-- c / c++
-		vim.lsp.config("clangd", {
-			filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+		vim.lsp.enable({
+			"lua_ls",
+			"ts_ls",
+			"vue_ls",
+			"tailwindcss",
+			"cssls",
+			"gopls",
+			"roslyn_ls",
+			"clangd",
 		})
-		vim.lsp.enable("clangd")
 	end,
 }

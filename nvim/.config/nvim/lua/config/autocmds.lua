@@ -56,18 +56,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 	end,
 })
-
--- Status Line
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
-  callback = function()
-    local b = vim.trim(vim.fn.system("git branch --show-current 2>/dev/null"))
-    local d = vim.fn.system("git diff --shortstat 2>/dev/null")
-    local ins, del = d:match("(%d+) insertion"), d:match("(%d+) deletion")
-    local s = b
-    if ins then s = s .. " +" .. ins end
-    if del then s = s .. " -" .. del end
-    vim.b.git = b == "" and "" or ("[" .. s .. "]")
-  end,
-})
-
-vim.o.statusline = "%{get(b:,'git','')} %f %m%=%{%v:lua.vim.diagnostic.status()%} %l:%c"
